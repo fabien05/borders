@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borders Food | Crossing Flavors | Corva di Azzano Decimo</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Google: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Library per Animazioni allo Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Swiper CSS per Caroselli -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- FontAwesome per Icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configurazione Tailwind Personalizzata -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#E5A93C', // Oro caldo/Ambra
+                            hover: '#C7891E',
+                            light: '#F5CE7A'
+                        },
+                        dark: '#0E0D0C',
+                        surface: '#171513',
+                        card: '#201D1A'
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html, body {
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+        }
+
+        @media (max-width: 767.98px) {
+            #menu-btn {
+                display: flex !important;
+            }
+        }
+        @media (min-width: 768px) {
+            #menu-btn {
+                display: none !important;
+            }
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: #E5A93C !important;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #E5A93C !important;
+        }
+        .swiper-pagination-bullet {
+            background-color: #ffffff;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="bg-dark text-stone-300 font-sans antialiased selection:bg-gold selection:text-black overflow-x-hidden max-w-full">
+
+    <!-- NAVBAR FISSA IN ALTO -->
+    <nav class="fixed top-0 left-0 right-0 w-full max-w-full z-[9999] bg-dark/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex justify-between items-center relative">
+            
+            <!-- LOGO NAVBAR -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="img/logo.jpg" alt="Borders Food Logo" class="h-10 sm:h-12 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('logo-fallback').classList.remove('hidden');">
+                
+                <!-- Fallback se non è presente logo.jpg -->
+                <div id="logo-fallback" class="hidden w-10 h-10 rounded-sm border border-gold/40 flex items-center justify-center text-gold font-serif font-black text-xl bg-surface">
+                    B
+                </div>
+
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg sm:text-2xl font-bold tracking-wider text-white leading-tight">
+                        BORDERS <span class="text-gold">FOOD</span>
+                    </span>
+                    <span class="text-[9px] uppercase tracking-[0.25em] text-stone-400 font-medium">Crossing Flavors</span>
+                </div>
+            </a>
+            
+            <!-- DESKTOP MENU (ORDINATO SECONDO IL SITO) -->
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-7 text-xs uppercase tracking-widest text-stone-300 font-medium">
+                <a href="#about" class="hover:text-gold transition-colors">Il Concept</a>
+                <a href="#food-gallery" class="hover:text-gold transition-colors">I Piatti</a>
+                <a href="#menu-sezione" class="hover:text-gold transition-colors">Menù</a>
+                <a href="#reels" class="hover:text-gold transition-colors">In Azione</a>
+                <a href="#locale-gallery" class="hover:text-gold transition-colors">Il Locale</a>
+                <a href="#hours-location" class="hover:text-gold transition-colors">Orari & Dove Siamo</a>
+                <a href="#contact" class="px-4 py-2.5 border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 rounded-sm font-semibold tracking-wider">
+                    Prenota
+                </a>
+            </div>
+
+            <!-- HAMBURGER BUTTON MOBILE -->
+            <button id="menu-btn" class="text-white hover:text-gold focus:outline-none p-2 items-center justify-center text-2xl" aria-label="Menu Mobile">
+                <i id="menu-icon" class="fa-solid fa-bars text-white text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN (ORDINATO SECONDO IL SITO) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-white/10 px-6 py-6 space-y-4 text-center uppercase tracking-widest text-sm">
+            <a href="#about" class="block text-stone-300 hover:text-gold py-2">Il Concept</a>
+            <a href="#food-gallery" class="block text-stone-300 hover:text-gold py-2">I Piatti</a>
+            <a href="#menu-sezione" class="block text-stone-300 hover:text-gold py-2">Menù</a>
+            <a href="#reels" class="block text-stone-300 hover:text-gold py-2">In Azione</a>
+            <a href="#locale-gallery" class="block text-stone-300 hover:text-gold py-2">Il Locale</a>
+            <a href="#hours-location" class="block text-stone-300 hover:text-gold py-2">Orari & Dove Siamo</a>
+            <a href="#contact" class="block text-gold border border-gold py-3 font-semibold mt-4">Prenota Ora</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center border-b border-white/5 overflow-hidden pt-20">
+        <!-- SFONDO LOCALE -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-70 pointer-events-none scale-105" style="background-image: url('img/locale1.jpg');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark/50 pointer-events-none"></div>
+
+        <div class="relative z-10 text-center px-6 max-w-4xl my-auto py-16" data-aos="fade-up">
+            
+            <!-- CATEGORIA LOCALE -->
+            <span class="inline-block text-gold uppercase tracking-[0.35em] text-xs sm:text-sm font-semibold mb-4 border-b border-gold/30 pb-2">
+                Ristopub • Crossing Flavors
+            </span>
+
+            <!-- NOME DEL LOCALE -->
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold mb-6 tracking-wider drop-shadow-md">
+                BORDERS <span class="text-gold">FOOD</span>
+            </h1>
+            
+            <!-- LOCALITÀ DISCRETA -->
+            <p class="text-stone-300 text-xs sm:text-sm uppercase tracking-[0.25em] font-light mb-10">
+                Corva di Azzano Decimo (PN)
+            </p>
+
+            <!-- CALL TO ACTION RAPIDE -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
+                <a href="#menu-sezione" class="px-8 py-4 bg-gold text-black font-semibold uppercase tracking-wider hover:bg-gold-hover transition-all duration-300 text-center shadow-lg shadow-gold/20 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-utensils"></i> Consulta il Menù
+                </a>
+                <a href="#contact" class="px-8 py-4 border border-white/30 text-white uppercase tracking-wider hover:border-gold hover:text-gold transition-all duration-300 text-center flex items-center justify-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Prenota un Tavolo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- IL CONCEPT SECTION -->
+    <section id="about" class="py-16 sm:py-24 max-w-7xl mx-auto px-6 border-b border-white/5 overflow-hidden">
+        <div class="grid md:grid-cols-2 gap-8 sm:gap-14 items-center">
+            
+            <!-- FOTO CONCEPT -->
+            <div class="relative" data-aos="fade-right">
+                <div class="aspect-[4/5] overflow-hidden rounded-sm relative group border border-white/10 shadow-2xl bg-card">
+                    <img src="img/concept.jpg" loading="lazy" alt="Borders Food Experience" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-32 h-32 sm:w-48 sm:h-48 border-2 border-gold -z-10 hidden sm:block"></div>
+            </div>
+
+            <!-- TESTI UFFICIALI CONCEPT -->
+            <div data-aos="fade-left" class="space-y-6">
+                <span class="text-gold uppercase tracking-widest text-sm font-semibold flex items-center gap-2">
+                    <i class="fa-solid fa-earth-americas"></i> Il Concept
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold leading-snug">
+                    Borders prende vita a Corva con un'idea chiara
+                </h2>
+                <div class="w-14 h-0.5 bg-gold mx-auto sm:mx-0"></div>
+                
+                <p class="text-stone-200 text-base sm:text-lg leading-relaxed font-normal">
+                    Proporre piatti e panini che fondono tecniche e sapori da tutto il mondo.<br><br>
+                    <strong class="text-gold font-semibold tracking-wide">VI ASPETTIAMO</strong>
+                </p>
+
+                <div class="pt-2 flex flex-wrap gap-6 text-sm text-stone-300">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-circle-check text-gold"></i>
+                        <span>Smash & Classic Buns</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-circle-check text-gold"></i>
+                        <span>Salse Homemade</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-circle-check text-gold"></i>
+                        <span>Crossing Flavors</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BANNER CITAZIONE 1 -->
+    <section class="py-12 bg-surface/80 border-b border-white/5 text-center px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <p class="font-serif italic text-lg sm:text-2xl text-stone-200 leading-relaxed tracking-wide">
+                “Piatti fatti con amore, birre fresche e quell’atmosfera che ti fa sentire subito a casa.”
+            </p>
+        </div>
+    </section>
+
+    <!-- 1. CAROSELLO CIBO (5 FOTO) -->
+    <section id="food-gallery" class="py-16 sm:py-24 border-b border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <span class="text-gold uppercase tracking-widest text-sm font-semibold">Le Nostre Creazioni</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold mt-2">I Nostri Piatti</h2>
+                <div class="w-14 h-0.5 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="swiper foodSwiper pb-12" data-aos="zoom-in">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/cibo1.jpg" loading="lazy" alt="Piatto Borders 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Nome Piatto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/cibo2.jpg" loading="lazy" alt="Piatto Borders 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Nome Piatto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/cibo3.jpg" loading="lazy" alt="Piatto Borders 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Nome Piatto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/cibo4.jpg" loading="lazy" alt="Piatto Borders 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Nome Piatto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/cibo5.jpg" loading="lazy" alt="Piatto Borders 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Nome Piatto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination food-pagination !-bottom-1"></div>
+                <div class="swiper-button-next food-next hidden sm:flex"></div>
+                <div class="swiper-button-prev food-prev hidden sm:flex"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENÙ COMPLETO CON FILTRI TAB E BOTTONI PDF -->
+    <section id="menu-sezione" class="py-16 sm:py-24 border-b border-white/5 bg-surface">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-8" data-aos="fade-up">
+                <span class="text-gold uppercase tracking-widest text-sm font-semibold">Listino Ufficiale</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold mt-2">Il Menù</h2>
+                <div class="w-14 h-0.5 bg-gold mx-auto mt-4 mb-6"></div>
+
+                <!-- BOTTONI DOWNLOAD PDF NON INVASIVI -->
+                <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
+                    <a href="menu/menu.pdf" target="_blank" download class="inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-gold/40 bg-card hover:bg-gold/10 hover:border-gold text-stone-300 hover:text-gold text-xs uppercase tracking-wider font-medium transition-all duration-300 shadow-sm">
+                        <i class="fa-regular fa-file-pdf text-gold text-sm"></i>
+                        <span>Scarica Menù (PDF)</span>
+                    </a>
+                    <a href="menu/asporto.pdf" target="_blank" download class="inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-gold/40 bg-card hover:bg-gold/10 hover:border-gold text-stone-300 hover:text-gold text-xs uppercase tracking-wider font-medium transition-all duration-300 shadow-sm">
+                        <i class="fa-solid fa-bag-shopping text-gold text-xs"></i>
+                        <span>Menù da Asporto (PDF)</span>
+                    </a>
+                </div>
+                
+                <!-- TABS DEL MENÙ -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto">
+                    <button class="menu-tab-btn active px-3.5 py-2 text-xs sm:text-sm uppercase tracking-wider font-semibold rounded-sm border border-gold bg-gold text-black transition-all" data-category="burgers">
+                        Burgers & Smash
+                    </button>
+                    <button class="menu-tab-btn px-3.5 py-2 text-xs sm:text-sm uppercase tracking-wider font-semibold rounded-sm border border-white/10 bg-card text-stone-300 hover:border-gold/50 transition-all" data-category="starters">
+                        Starters
+                    </button>
+                    <button class="menu-tab-btn px-3.5 py-2 text-xs sm:text-sm uppercase tracking-wider font-semibold rounded-sm border border-white/10 bg-card text-stone-300 hover:border-gold/50 transition-all" data-category="specials">
+                        Specials & Rolls
+                    </button>
+                    <button class="menu-tab-btn px-3.5 py-2 text-xs sm:text-sm uppercase tracking-wider font-semibold rounded-sm border border-white/10 bg-card text-stone-300 hover:border-gold/50 transition-all" data-category="piatti">
+                        Piatti & Kids
+                    </button>
+                    <button class="menu-tab-btn px-3.5 py-2 text-xs sm:text-sm uppercase tracking-wider font-semibold rounded-sm border border-white/10 bg-card text-stone-300 hover:border-gold/50 transition-all" data-category="salse-dolci">
+                        Salse & Dolci
+                    </button>
+                    <button class="menu-tab-btn px-3.5 py-2 text-xs sm:text-sm uppercase tracking-wider font-semibold rounded-sm border border-white/10 bg-card text-stone-300 hover:border-gold/50 transition-all" data-category="beverage">
+                        Birre, Vini & Drink
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONTENUTO DELLE CATEGORIE MENÙ -->
+
+            <!-- 1. BURGERS -->
+            <div id="cat-burgers" class="menu-category grid grid-cols-1 md:grid-cols-2 gap-5" data-aos="fade-up">
+                
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Classic Bun</h4>
+                        <span class="text-gold font-bold text-base">11,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, burger di manzo da 170g, pomodoro, cetriolini, lattuga, cipolla cruda, ketchup.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-2">(glutine, sedano, senape)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Classic V</h4>
+                        <span class="text-gold font-bold text-base">13,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, burger vegano da 130g, noci pecan, mela croccante fresca, valeriana e salsa di avocado.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-2">(glutine, frutta a guscio)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Boob/S</h4>
+                        <span class="text-gold font-bold text-base">13,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, burger di manzo da 170g, bacon, provola affumicata, lattuga, pomodoro, salsa lava's.
+                    </p>
+                    <span class="text-xs text-gold/90 font-medium block mt-1">+ Double burger: + 3,50 €</span>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, latte e derivati, uova e derivati, senape)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Smashing Bros</h4>
+                        <span class="text-gold font-bold text-base">12,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, 2 burger di manzo da 90g smashati, friggitelli saltati, cheddar, bacon, salsa alabama peppery.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-2">(glutine, latte e derivati, uova e derivati, senape)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Smashing Sister</h4>
+                        <span class="text-gold font-bold text-base">12,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, burger di manzo da 90g smashati, cavolo cappuccio saltato al rub, edamer, salsa yogurt al lime.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-2">(glutine, latte e derivati)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Smashing Uncle</h4>
+                        <span class="text-gold font-bold text-base">12,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, 2 burger di manzo da 90g smashati, bacon, cipolla cruda, jalapeño verde piccante, cheddar, salsa mississippi.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-2">(glutine, uova e derivati, senape, soia, solfiti, latte e derivati)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Nitro</h4>
+                        <span class="text-gold font-bold text-base">14,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, burger di manzo da 170g, bacon, friggitelli saltati, mostarda di mele, noci pecan, salsa lava's.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-2">(glutine, frutta a guscio, uova e derivati, senape)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Over The Pop</h4>
+                        <span class="text-gold font-bold text-base">13,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, burger di manzo da 170g, edamer, speck fresco, uovo, maionese, popcorn.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-2">(glutine, latte e derivati, uova e derivati)</span>
+                </div>
+
+            </div>
+
+            <!-- 2. STARTERS -->
+            <div id="cat-starters" class="menu-category hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Salvia Fritta</h4>
+                        <span class="text-gold font-bold text-base">5,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">Salvia fritta in pastella di birra.</p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Che Patata Vuoi?</h4>
+                        <span class="text-gold font-bold text-base">4,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">Fritte al forno? Scegli le tue preferite.</p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, latte e derivati, sedano)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Turkey Stripes</h4>
+                        <span class="text-gold font-bold text-base">7,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Striscioline di tacchino con panatura ai fiocchi di riso a scelta tra: classica / peperoncino / lime e cocco / ciliegia accompagnate da una salsa a piacere.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, sedano)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Plantain Chips</h4>
+                        <span class="text-gold font-bold text-base">6,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Composizione floreale di platano fritto tagliato a rondelle ovali su salsa di avocado.
+                    </p>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Falafel Con Tzatziki</h4>
+                        <span class="text-gold font-bold text-base">5,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Polpette di ceci speziate con salsa tzatziki.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(solfiti, latte e derivati)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Pulled Bites</h4>
+                        <span class="text-gold font-bold text-base">6,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Crocchette di pulled pork.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, senape, soia)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Cipolle Fritte In Pastella</h4>
+                        <span class="text-gold font-bold text-base">5,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Cipolle fresche in pastella di birra.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">No Borders</h4>
+                        <span class="text-gold font-bold text-base">6,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Friggitelli scottati in piastra e salsa lava's.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(uova e derivati, senape)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Witloof</h4>
+                        <span class="text-gold font-bold text-base">6,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Indivia belga farcita con philadelphia aromatizzata alle erbe e top di noci pecan.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(latte e derivati, frutta a guscio)</span>
+                </div>
+
+            </div>
+
+            <!-- 3. SPECIALS & ROLLS -->
+            <div id="cat-specials" class="menu-category hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Octopus</h4>
+                        <span class="text-gold font-bold text-base">17,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, polpo* alla piastra, avocado, valeriana, granella pecan, philadelphia aromatizzata con erbe fresche accompagnato da patate al forno.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, latte e derivati, pesce, molluschi, frutta a guscio)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Turkey B</h4>
+                        <span class="text-gold font-bold text-base">13,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, striscioline di tacchino con panatura ai fiocchi di riso, lattuga, cipolla caramellata, edamer, pomodoro, friggitelli saltati, salsa ajvar, maionese.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, latte e derivati, uova e derivati, sedano)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Nutty Streets</h4>
+                        <span class="text-gold font-bold text-base">9,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Piadina all'olio, falafel, verdure saltate (carote, zucchine, cappuccio), pomodoro e burro di arachidi.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, soia, senape, arachidi e derivati)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Jungle</h4>
+                        <span class="text-gold font-bold text-base">11,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Piadina all'olio, prosciutto cotto di praga, provola affumicata, verza, pomodoro, paté di peperoncino, coulis al mango.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, latte e derivati, solfiti)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Turkey Riot</h4>
+                        <span class="text-gold font-bold text-base">11,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Piadina all'olio, striscioline di tacchino con panatura ai fiocchi di riso, cappuccio saltato al rub, pomodoro, salsa yogurt al lime.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, latte e derivati, soia, senape, uova e derivati)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Beefed Up</h4>
+                        <span class="text-gold font-bold text-base">10,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Piadina all'olio, carne di manzo saltata con cipolla cruda, salsa coleslaw, pomodoro, bacon, provola affumicata e salsa lava's.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(latte e derivati, glutine, senape, solfiti, uova e derivati)</span>
+                </div>
+
+            </div>
+
+            <!-- 4. PIATTI & KIDS -->
+            <div id="cat-piatti" class="menu-category hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Fish & Chips</h4>
+                        <span class="text-gold font-bold text-base">16,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Cuore di merluzzo pastellato, crema di piselli, patate* fritte e salsa lava's.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, pesce, uova e derivati, senape)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Polpo Alla Piastra</h4>
+                        <span class="text-gold font-bold text-base">19,50 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Polpo* alla piastra con purè al rosmarino e crema di piselli.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(pesce, molluschi, latte e derivati)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Sunbreaker</h4>
+                        <span class="text-gold font-bold text-base">13,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Burger di manzo da 180g, uovo in camicia, bacon croccante, patate al forno, fetta di pane e salsa avocado.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, latte e derivati, uova e derivati)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Moonbreaker</h4>
+                        <span class="text-gold font-bold text-base">13,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Filetti di tacchino alla piastra con teriyaki accompagnati da patate smashate con formaggio fuso e salsa coleslaw.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(latte e derivati, sedano, senape, solfiti, soia)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Cherry Crush</h4>
+                        <span class="text-gold font-bold text-base">9,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Spiedini di manzo aromatizzati con rub alla ciliegia accompagnati da zucchine alla piastra.
+                    </p>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Lighthouse</h4>
+                        <span class="text-gold font-bold text-base">8,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Insalata di cappuccio saltato al rub con chiffonade di pesche, avocado, sedano, finocchio e mela con coulis d'uva.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(sedano)</span>
+                </div>
+
+                <!-- KIDS ONLY -->
+                <div class="bg-card p-6 rounded-sm border border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-gold tracking-wide">Babyyy (Kids)</h4>
+                        <span class="text-gold font-bold text-base">8,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Bun, burger di manzo 90g, cheddar, pomodoro, ketchup, lattuga e contorno di patatine fritte*.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, latte e derivati, sedano)</span>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif text-lg font-bold text-gold tracking-wide">Little Bros (Kids)</h4>
+                        <span class="text-gold font-bold text-base">8,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Medaglione di tacchino accompagnato da patate al forno con ketchup e maionese.
+                    </p>
+                    <span class="text-[11px] text-stone-500 block mt-1">(glutine, uova e derivati, latte e derivati, sedano)</span>
+                </div>
+
+            </div>
+
+            <!-- 5. SALSE & DOLCI -->
+            <div id="cat-salse-dolci" class="menu-category hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Salse Homemade</h4>
+                        <span class="text-gold font-bold text-base">1,00 € cad.</span>
+                    </div>
+                    <ul class="text-stone-300 text-sm space-y-2 font-light">
+                        <li><strong class="text-white">Salsa Lava's:</strong> la nostra salsa segreta a base maionese. <span class="text-xs text-stone-500">(uova e derivati, senape)</span></li>
+                        <li><strong class="text-white">Tzatziki:</strong> salsa a base di yogurt, cetriolo, aglio e olio. <span class="text-xs text-stone-500">(latte e derivati, solfiti)</span></li>
+                        <li><strong class="text-white">Salsa Yogurt:</strong> yogurt greco con erbe aromatiche, lime e spezie. <span class="text-xs text-stone-500">(latte e derivati)</span></li>
+                        <li><strong class="text-white">Salsa Avocado:</strong> emulsione di avocado, olio e spezie.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-serif text-lg font-bold text-white tracking-wide">Altre Salse & Tris</h4>
+                        <span class="text-gold font-bold text-base">1,00 € / Tris 2,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed mb-3">
+                        Maionese, Ketchup, Salsa Ajvar, Alabama Peppery White, Salsa Mississippi, BBQ, Paté di Peperoncino Piccante, Mostarda di Mele.
+                    </p>
+                    <div class="p-3 bg-surface border border-gold/20 rounded-sm text-xs text-gold">
+                        <strong>Tris Di Salse a scelta: 2,00 €</strong>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all md:col-span-2">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-serif text-xl font-bold text-white tracking-wide">Dolci Del Giorno</h4>
+                        <span class="text-gold font-bold text-base">6,00 €</span>
+                    </div>
+                    <p class="text-stone-300 text-sm font-light leading-relaxed">
+                        Chiedi allo staff per sapere cosa abbiamo preparato oggi di fresco.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- 6. BEVERAGE & DRINK -->
+            <div id="cat-beverage" class="menu-category hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <h4 class="font-serif text-lg font-bold text-gold uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Birre Alla Spina</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex justify-between items-start">
+                            <div>
+                                <span class="font-bold text-white block">Tannen Hell - Hohenthanner</span>
+                                <span class="text-xs text-stone-400">Leggera, dorata e beverina bavarese, 4,9 % vol.</span>
+                            </div>
+                            <span class="text-gold font-bold">3,00 €</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <div>
+                                <span class="font-bold text-white block">Land-Zwickel (Non Filtrata) - Usterbacher</span>
+                                <span class="text-xs text-stone-400">Bassa temperatura, beva delicata, 5,1 % vol.</span>
+                            </div>
+                            <span class="text-gold font-bold">3,00 €</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <div>
+                                <span class="font-bold text-white block">Altbayerisch Dunkel - Usterbacher</span>
+                                <span class="text-xs text-stone-400">Scura tradizionale, malto arrostito, 5,6 % vol.</span>
+                            </div>
+                            <span class="text-gold font-bold">3,00 €</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <div>
+                                <span class="font-bold text-white block">All Day IPA (Founders)</span>
+                                <span class="text-xs text-stone-400">Session IPA agrumata e rinfrescante, 4,7 % vol.</span>
+                            </div>
+                            <span class="text-gold font-bold">5,00 €</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <h4 class="font-serif text-lg font-bold text-gold uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Aperitivi & Mixology</h4>
+                    <ul class="space-y-2 text-sm text-stone-300">
+                        <li class="flex justify-between"><span>Spritz Aperol</span><span class="text-gold font-semibold">3,50 €</span></li>
+                        <li class="flex justify-between"><span>Spritz Campari</span><span class="text-gold font-semibold">4,00 €</span></li>
+                        <li class="flex justify-between"><span>Spritz Bianco / Rosso</span><span class="text-gold font-semibold">2,00 €</span></li>
+                        <li class="flex justify-between"><span>Prosecco Aperol / Campari</span><span class="text-gold font-semibold">5,00 €</span></li>
+                        <li class="flex justify-between"><span>Hugo</span><span class="text-gold font-semibold">4,50 €</span></li>
+                        <li class="flex justify-between"><span>Americano</span><span class="text-gold font-semibold">6,00 €</span></li>
+                        <li class="flex justify-between"><span class="font-semibold text-white">Borders USA</span><span class="text-gold font-bold">6,00 €</span></li>
+                        <li class="flex justify-between"><span>Negroni</span><span class="text-gold font-semibold">7,00 €</span></li>
+                        <li class="flex justify-between"><span>Cocktails Miscelati / Premium</span><span class="text-gold font-semibold">6,00 € / 8,00 €</span></li>
+                        <li class="flex justify-between"><span>Long Drinks / Pestati</span><span class="text-gold font-semibold">7,00 € / 8,00 €</span></li>
+                        <li class="flex justify-between"><span>Aperitivo Analcolico / Crodino</span><span class="text-gold font-semibold">3,00 €</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <h4 class="font-serif text-lg font-bold text-gold uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Vini Selezionati</h4>
+                    <ul class="space-y-2 text-sm text-stone-300">
+                        <li class="flex justify-between"><span>Bianco / Rosso (Ronchi San Giuseppe)</span><span class="text-gold font-semibold">2,00 €</span></li>
+                        <li class="flex justify-between"><span>Cab. Sauvignon (Bottega Vinai)</span><span class="text-gold font-semibold">3,50 €</span></li>
+                        <li class="flex justify-between"><span>Merlot (Draga)</span><span class="text-gold font-semibold">3,50 €</span></li>
+                        <li class="flex justify-between"><span>Friulano (Draga)</span><span class="text-gold font-semibold">3,50 €</span></li>
+                        <li class="flex justify-between"><span>Pinot Grigio (Ermacora)</span><span class="text-gold font-semibold">4,00 €</span></li>
+                        <li class="flex justify-between"><span>Ribolla Gialla (Villa Russiz)</span><span class="text-gold font-semibold">4,50 €</span></li>
+                        <li class="flex justify-between"><span>Prosecco (Contarini)</span><span class="text-gold font-semibold">3,00 €</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-card p-6 rounded-sm border border-white/5 hover:border-gold/30 transition-all">
+                    <h4 class="font-serif text-lg font-bold text-gold uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Bibite, Spirits & Caffetteria</h4>
+                    <ul class="space-y-2 text-sm text-stone-300">
+                        <li class="flex justify-between"><span>Coca Cola alla spina (0.3L / 0.5L)</span><span class="text-gold font-semibold">3,00 € / 5,00 €</span></li>
+                        <li class="flex justify-between"><span>Acqua 0.75 L / Bibite bottiglia</span><span class="text-gold font-semibold">3,00 € / 3,50 €</span></li>
+                        <li class="flex justify-between"><span>Red Bull</span><span class="text-gold font-semibold">4,00 €</span></li>
+                        <li class="flex justify-between"><span>Amari, Grappe, Brandy, Vodka</span><span class="text-gold font-semibold">3,50 €</span></li>
+                        <li class="flex justify-between"><span>Whiskey, Rum, Tequila, Mezcal</span><span class="text-gold font-semibold">4,00 €</span></li>
+                        <li class="flex justify-between"><span>Caffè Espresso / Decaffeinato</span><span class="text-gold font-semibold">1,50 €</span></li>
+                        <li class="flex justify-between"><span>Caffè Corretto</span><span class="text-gold font-semibold">2,00 €</span></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 2. CAROSELLO 2 VIDEO REEL -->
+    <section id="reels" class="py-16 sm:py-24 border-b border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <span class="text-gold uppercase tracking-widest text-sm font-semibold">Social & Reel</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold mt-2">Borders in Azione</h2>
+                <div class="w-14 h-0.5 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- CONTENITORE SLIDER A 2 VIDEO -->
+            <div class="max-w-xs sm:max-w-sm mx-auto relative" data-aos="fade-up">
+                <div class="swiper reelSwiper pb-12">
+                    <div class="swiper-wrapper">
+                        
+                        <!-- VIDEO 1 -->
+                        <div class="swiper-slide">
+                            <div class="relative rounded-sm overflow-hidden border border-white/10 aspect-[9/16] group shadow-2xl bg-card">
+                                <video loop muted playsinline class="w-full h-full object-cover reel-video">
+                                    <source src="img/video1.mp4" type="video/mp4">
+                                </video>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 p-4 flex flex-col justify-end">
+                                    <a href="https://www.instagram.com/bordersfood" target="_blank" rel="noopener noreferrer" class="text-xs text-white flex items-center gap-2 hover:text-gold transition-colors mt-1 font-medium">
+                                        <i class="fa-brands fa-instagram text-base"></i> Segui @bordersfood
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VIDEO 2 -->
+                        <div class="swiper-slide">
+                            <div class="relative rounded-sm overflow-hidden border border-white/10 aspect-[9/16] group shadow-2xl bg-card">
+                                <video loop muted playsinline class="w-full h-full object-cover reel-video">
+                                    <source src="img/video2.mp4" type="video/mp4">
+                                </video>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 p-4 flex flex-col justify-end">
+                                    <a href="https://www.instagram.com/bordersfood" target="_blank" rel="noopener noreferrer" class="text-xs text-white flex items-center gap-2 hover:text-gold transition-colors mt-1 font-medium">
+                                        <i class="fa-brands fa-instagram text-base"></i> Segui @bordersfood
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination reel-pagination !-bottom-1"></div>
+                    <div class="swiper-button-next reel-next"></div>
+                    <div class="swiper-button-prev reel-prev"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. CAROSELLO LOCALE CON TESTO BORDERS CORNERS (6 FOTO) -->
+    <section id="locale-gallery" class="py-16 sm:py-24 bg-surface border-b border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- INTRODUZIONE BORDERS CORNERS -->
+            <div class="text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up">
+                <span class="text-gold uppercase tracking-[0.25em] text-sm font-semibold block mb-2">BORDERS CORNERS</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold leading-tight">Il Nostro Locale</h2>
+                <div class="w-14 h-0.5 bg-gold mx-auto mt-4 mb-6"></div>
+                <p class="font-sans text-stone-300 text-sm sm:text-base leading-relaxed font-light mb-2">
+                    Negli angoli di Borders i confini si sciolgono.<br>
+                    Restano solo momenti e la sensazione di sentirsi a casa.
+                </p>
+                <span class="font-serif text-gold font-medium tracking-widest text-sm uppercase">Ti aspettiamo</span>
+            </div>
+
+            <!-- SWIPER LOCALE (6 FOTO) -->
+            <div class="swiper localeSwiper pb-12" data-aos="zoom-in">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/locale6.jpg" loading="lazy" alt="Borders Corners Foto 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Borders Corners</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/locale2.jpg" loading="lazy" alt="Borders Corners Foto 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">L'Atmosfera</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/locale3.jpg" loading="lazy" alt="Borders Corners Foto 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">I Nostri Tavoli</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/locale4.jpg" loading="lazy" alt="Borders Corners Foto 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Il Bancone</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/locale5.jpg" loading="lazy" alt="Borders Corners Foto 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Le Spine</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="relative overflow-hidden rounded-sm aspect-[4/5] group border border-white/5 bg-card">
+                            <img src="img/locale1.jpg" loading="lazy" alt="Borders Corners Foto 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <span class="text-gold font-serif text-base font-medium">Serate in Compagnia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination locale-pagination !-bottom-1"></div>
+                <div class="swiper-button-next locale-next hidden sm:flex"></div>
+                <div class="swiper-button-prev locale-prev hidden sm:flex"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ORARI E DOVE SIAMO -->
+    <section id="hours-location" class="py-16 sm:py-24 max-w-7xl mx-auto px-6 border-b border-white/5">
+        <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
+            
+            <!-- Orari -->
+            <div class="bg-card p-6 sm:p-12 rounded-sm border border-white/5" data-aos="fade-up">
+                <span class="text-gold uppercase tracking-widest text-sm font-semibold">Orari di Apertura</span>
+                <h3 class="font-serif text-2xl sm:text-3xl text-white font-bold mt-2 mb-6">Quando Trovarci</h3>
+                
+                <ul class="space-y-3 text-xs sm:text-sm tracking-wide">
+                    <li class="flex justify-between border-b border-white/10 pb-2.5">
+                        <span class="text-stone-400">Lunedì</span>
+                        <span class="text-gold font-semibold">Chiuso</span>
+                    </li>
+                    <li class="flex justify-between border-b border-white/10 pb-2.5">
+                        <span class="text-stone-400">Martedì</span>
+                        <span class="text-gold font-semibold">Chiuso</span>
+                    </li>
+                    <li class="flex justify-between border-b border-white/10 pb-2.5">
+                        <span class="text-stone-400">Mercoledì</span>
+                        <span class="text-white font-medium">17:30 – 00:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-white/10 pb-2.5">
+                        <span class="text-stone-400">Giovedì</span>
+                        <span class="text-white font-medium">17:30 – 00:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-white/10 pb-2.5">
+                        <span class="text-stone-400">Venerdì</span>
+                        <span class="text-white font-medium">17:30 – 01:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-white/10 pb-2.5">
+                        <span class="text-stone-400">Sabato</span>
+                        <span class="text-white font-medium">17:30 – 01:00</span>
+                    </li>
+                    <li class="flex justify-between pb-1">
+                        <span class="text-stone-400">Domenica</span>
+                        <span class="text-white font-medium">17:30 – 00:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Posizione con Mappa Interattiva su Corva -->
+            <div class="flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                    <span class="text-gold uppercase tracking-widest text-sm font-semibold">Posizione</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl text-white font-bold mt-2 mb-3">Dove Siamo</h3>
+                    <p class="text-stone-200 font-medium text-base mb-1">
+                        Borders Food
+                    </p>
+                    <p class="text-stone-400 mb-6 font-light text-sm sm:text-base">
+                        Via A. Boito, 41<br>
+                        33082 Corva PN, Italia
+                    </p>
+                </div>
+
+                <div class="w-full h-64 sm:h-72 bg-card rounded-sm overflow-hidden relative border border-white/10 shadow-lg">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Via%20A.%20Boito%2041%2033082%20Corva%20PN&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        class="w-full h-full grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300 border-0" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PRENOTAZIONI / CONTATTI -->
+    <section id="contact" class="py-16 sm:py-24 bg-surface text-center">
+        <div class="max-w-3xl mx-auto px-6" data-aos="zoom-in">
+            <span class="text-gold uppercase tracking-widest text-sm font-semibold">Ti aspettiamo a Corva</span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold mt-2 mb-6">Prenota il tuo Tavolo</h2>
+            <p class="text-stone-300 mb-10 font-light text-sm sm:text-base leading-relaxed">
+                Vuoi assicurarti il tavolo per provare i nostri burgers e le nostre specialità? Scrivici su WhatsApp, chiamaci direttamente o inviaci un'email.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center">
+                <a href="https://wa.me/393758334900?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20presso%20Borders%20Food." target="_blank" class="px-6 py-4 bg-green-600/20 border border-green-500/50 text-green-400 hover:bg-green-500 hover:text-black transition-all duration-300 flex items-center justify-center gap-3 font-semibold shadow-lg shadow-green-950/20 text-sm">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>WhatsApp</span>
+                </a>
+
+                <a href="tel:+393758334900" class="px-6 py-4 border border-white/20 text-white hover:border-gold hover:text-gold transition-all duration-300 flex items-center justify-center gap-3 font-semibold text-sm">
+                    <i class="fa-solid fa-phone text-sm"></i>
+                    <span>375 833 4900</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-dark border-t border-white/5 text-center text-xs text-stone-500">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Borders Food — Via A. Boito 41, Corva PN • <a href="mailto:info@bordersfood.it" class="hover:text-gold transition-colors">info@bordersfood.it</a></p>
+            <div class="flex space-x-6 text-base">
+                <a href="https://www.facebook.com/p/Borders-Food-61577295794747/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-gold transition-colors">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/bordersfood" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-gold transition-colors">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="mailto:info@bordersfood.it" aria-label="Email" class="hover:text-gold transition-colors">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIBRERIE JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            offset: 50
+        });
+
+        // 1. SWIPER CIBO (5 FOTO)
+        const foodSwiper = new Swiper('.foodSwiper', {
+            slidesPerView: 1.15,
+            spaceBetween: 16,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.food-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.food-next',
+                prevEl: '.food-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 28,
+                }
+            }
+        });
+
+        // 2. SWIPER REEL (2 VIDEO)
+        const reelSwiper = new Swiper('.reelSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            pagination: {
+                el: '.reel-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.reel-next',
+                prevEl: '.reel-prev',
+            },
+            on: {
+                init: function () {
+                    playActiveVideo(this);
+                },
+                slideChange: function () {
+                    playActiveVideo(this);
+                }
+            }
+        });
+
+        function playActiveVideo(swiperInstance) {
+            document.querySelectorAll('.reel-video').forEach(video => {
+                video.pause();
+            });
+            const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+            if (activeSlide) {
+                const activeVideo = activeSlide.querySelector('.reel-video');
+                if (activeVideo) {
+                    activeVideo.play().catch(() => {});
+                }
+            }
+        }
+
+        // 3. SWIPER LOCALE (6 FOTO)
+        const localeSwiper = new Swiper('.localeSwiper', {
+            slidesPerView: 1.15,
+            spaceBetween: 16,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.locale-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.locale-next',
+                prevEl: '.locale-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 28,
+                }
+            }
+        });
+
+        // MENU TABS FILTRI
+        const tabButtons = document.querySelectorAll('.menu-tab-btn');
+        const categories = document.querySelectorAll('.menu-category');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetCat = btn.getAttribute('data-category');
+
+                tabButtons.forEach(b => {
+                    b.classList.remove('bg-gold', 'text-black', 'border-gold', 'active');
+                    b.classList.add('bg-card', 'text-stone-300', 'border-white/10');
+                });
+                btn.classList.remove('bg-card', 'text-stone-300', 'border-white/10');
+                btn.classList.add('bg-gold', 'text-black', 'border-gold', 'active');
+
+                categories.forEach(cat => {
+                    if (cat.id === `cat-${targetCat}`) {
+                        cat.classList.remove('hidden');
+                    } else {
+                        cat.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // MOBILE MENU TOGGLE
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
+            if (isMenuOpen) {
+                menuIcon.classList.remove('fa-bars', 'text-white');
+                menuIcon.classList.add('fa-xmark', 'text-gold');
+            } else {
+                menuIcon.classList.remove('fa-xmark', 'text-gold');
+                menuIcon.classList.add('fa-bars', 'text-white');
+            }
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark', 'text-gold');
+                menuIcon.classList.add('fa-bars', 'text-white');
+            });
+        });
+    </script>
+</body>
+</html>
