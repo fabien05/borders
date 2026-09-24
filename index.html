@@ -135,13 +135,28 @@
         <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark/50 pointer-events-none"></div>
 
         <div class="relative z-10 text-center px-6 max-w-4xl my-auto py-16" data-aos="fade-up">
-            <span class="inline-block text-gold uppercase tracking-[0.35em] text-xs sm:text-sm font-semibold mb-4 border-b border-gold/30 pb-2">
-                Ristopub • Crossing Flavors
-            </span>
+            
+            <!-- LOGO ESTESO CON FALLBACK ACCESSIBILE PER I MOTORI DI RICERCA -->
+            <div class="flex justify-center mb-6">
+                <!-- Se l'immagine si carica mostra il logo PNG -->
+                <img src="img/logobianco.png" 
+                     alt="Borders Food - Crossing Flavors" 
+                     class="w-auto h-28 sm:h-36 md:h-44 max-w-[85vw] object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]"
+                     onerror="this.style.display='none'; document.getElementById('hero-text-fallback').classList.remove('hidden');">
+                
+                <!-- Fallback SEO / Se l'immagine non viene trovata -->
+                <div id="hero-text-fallback" class="hidden">
+                    <span class="inline-block text-gold uppercase tracking-[0.35em] text-xs sm:text-sm font-semibold mb-3 border-b border-gold/30 pb-2">
+                        Ristopub • Crossing Flavors
+                    </span>
+                    <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold tracking-wider drop-shadow-md">
+                        BORDERS <span class="text-gold">FOOD</span>
+                    </h1>
+                </div>
+            </div>
 
-            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold mb-6 tracking-wider drop-shadow-md">
-                BORDERS <span class="text-gold">FOOD</span>
-            </h1>
+            <!-- Titolo H1 nascosto visivamente ma presente per Google (SEO fondamentale) -->
+            <h1 class="sr-only">Borders Food | Crossing Flavors | Ristopub Corva di Azzano Decimo</h1>
             
             <p class="text-stone-300 text-xs sm:text-sm uppercase tracking-[0.25em] font-light mb-10">
                 Corva di Azzano Decimo (PN)
